@@ -3,6 +3,8 @@ package com.example.demo.login.controller;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +16,7 @@ import com.example.demo.domain.model.SignupForm;
 
 	@Controller
 public class SignupController {
+		
 	private Map < String, String > radioMarriage;
 
 	private Map < String, String > initRadioMarrige() {
@@ -34,7 +37,7 @@ public class SignupController {
 	}
 
 	 @ PostMapping("/signup")
-	public String postSignUp(@ ModelAttribute SignupForm form,
+	public String postSignUp(@ ModelAttribute @ Valid SignupForm form,
 			BindingResult bindingResult,
 			Model model) {
 		if ( bindingResult. hasErrors() ) {
