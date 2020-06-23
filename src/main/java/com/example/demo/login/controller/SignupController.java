@@ -1,3 +1,5 @@
+//結婚してるかどうかのラジオボタンの制御
+
 package com.example.demo.login.controller;
 
 import java.util.LinkedHashMap;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.domain.model.GroupOrder;
 import com.example.demo.domain.model.SignupForm;
 
+//TODO ????
 	@Controller
 public class SignupController {
 		
@@ -27,6 +30,7 @@ public class SignupController {
 		return radio;
 	}
 
+// TODO ????
 	@GetMapping("/signup")
 	public String getSignUp(@ModelAttribute SignupForm form,
 			Model model){
@@ -36,6 +40,7 @@ public class SignupController {
 		return "login/signup";
 	}
 
+	// TODO ????
 	 @PostMapping("/signup")
 	public String postSignUp(@ModelAttribute @Validated(GroupOrder.class) SignupForm form,
 			BindingResult bindingResult,

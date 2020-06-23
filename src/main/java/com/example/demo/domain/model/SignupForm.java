@@ -1,3 +1,5 @@
+//登録画面で、入力するときの規則を定める。
+
 package com.example.demo.domain.model;
 
 import java.util.Date;
@@ -17,6 +19,8 @@ import lombok.Data;
 
 @Data
 public class SignupForm {
+	
+//アノテーションを用いて、入力ルールをつくる。
 
 	@NotBlank(groups=ValidGroup1.class, message="{require_check}")
 	@Email(groups=ValidGroup2.class, message="{email_check}")
