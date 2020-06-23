@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.domain.model.GroupOrder;
 import com.example.demo.domain.model.SignupForm;
 
-//TODO ????
+//ラジオボタンを表示している
 	@Controller
 public class SignupController {
-		
+
 	private Map <String, String> radioMarriage;
 
 	private Map <String, String> initRadioMarrige() {
@@ -30,7 +30,7 @@ public class SignupController {
 		return radio;
 	}
 
-// TODO ????
+// TODO すみません、ここはこういうことをしているというおおざっぱな説明がほしいです。
 	@GetMapping("/signup")
 	public String getSignUp(@ModelAttribute SignupForm form,
 			Model model){
@@ -40,7 +40,7 @@ public class SignupController {
 		return "login/signup";
 	}
 
-	// TODO ????
+// TODO すみません、ここはこういうことをしているというおおざっぱな説明がほしいです。
 	 @PostMapping("/signup")
 	public String postSignUp(@ModelAttribute @Validated(GroupOrder.class) SignupForm form,
 			BindingResult bindingResult,

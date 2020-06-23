@@ -1,5 +1,3 @@
-// TODO ????
-
 package com.example.demo;
 
 import org.springframework.context.MessageSource;
@@ -11,6 +9,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 @Configuration
 public class WebConfig {
 
+// TODO これより下でしていることと、Beanの役割をからめて説明してほしいです。
 @Bean
 public MessageSource messageSource() {
 
