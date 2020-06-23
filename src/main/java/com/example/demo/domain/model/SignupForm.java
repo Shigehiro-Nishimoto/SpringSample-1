@@ -18,26 +18,27 @@ import lombok.Data;
 @Data
 public class SignupForm {
 
-	@NotBlank(message = "{require_check}")
-	@Email(message = "{email_check}")	
+	@NotBlank(groups=ValidGroup1.class, message="{require_check}")
+	@Email(groups=ValidGroup2.class, message="{email_check}")
 	private String userId; // ユーザー ID
-	
-	@NotBlank(message = "{require_check}")
-	@Length(min = 4, max = 100, message = "{length_check}")
-	@Pattern(regexp = "^[a-zA-Z0-9]+$", message = "{pattern_check}")
+
+	@NotBlank(groups=ValidGroup1.class, message="{require_check}")
+	@Length(groups=ValidGroup2.class, min=4, max=100)
+	//, message="{length_check}"
+	@Pattern(groups=ValidGroup3.class, regexp="^[a-zA-Z0-9]+$", message="{pattern_check}")
 	private String password; // パスワード
-	
-	@NotBlank(message = "{require_check}")
+
+	@NotBlank(groups=ValidGroup1.class, message="{require_check}")
 	private String userName; // ユーザー 名
-	
-	@NotNull(message = "{require_check}")
+
+	@NotNull(groups=ValidGroup1.class, message="{require_check}")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date birthday; // 誕生日
-	
-	@Min(value=20, message = "{min_check}")
-	@Max(value=100, message = "{max_check}")
+
+	@Min(groups=ValidGroup2.class, value=20, message="{min_check}")
+	@Max(message="{max_check}", value=100, groups=ValidGroup2.class)
 	private int age; // 年齢
-	
-	@AssertFalse(message = "{false_check}")
+
+	@AssertFalse(groups=ValidGroup2.class, message="{false_check}")
 	private boolean marriage; // 結婚 ステータス
 }
