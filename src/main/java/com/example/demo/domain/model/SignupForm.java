@@ -27,8 +27,7 @@ public class SignupForm {
 	private String userId; // ユーザー ID
 
 	@NotBlank(groups=ValidGroup1.class, message="{require_check}")
-	@Length(groups=ValidGroup2.class, min=4, max=100)
-	//, message="{length_check}"
+	@Length(groups=ValidGroup2.class, min=4, max=100, message="{length_check}")
 	@Pattern(groups=ValidGroup3.class, regexp="^[a-zA-Z0-9]+$", message="{pattern_check}")
 	private String password; // パスワード
 
