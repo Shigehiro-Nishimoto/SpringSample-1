@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 	@PostMapping("/login")
 	public String postLogin(Model model){
 
-	return "login/login";
+
+	//ホーム画面に遷移
+
+	return "redirect:/home";
    }
 }
