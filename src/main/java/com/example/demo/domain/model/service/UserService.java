@@ -25,12 +25,18 @@ return result;
 }
 
 public int count() {
-	
+
 return dao.count();
 }
 
 public List<User> selectMany() {
 
 return dao.selectMany();
+	}
+
+public User selectOne(String userId) {
+	//selectOne実行
+
+	return dao.selectOne(userId);
 	}
 }
