@@ -26,8 +26,7 @@ public int count() {
 
 String sql = "SELECT COUNT(*) FROM m_user";
 
-SqlParameterSource params = new
-MapSqlParameterSource();
+SqlParameterSource params = new MapSqlParameterSource();
 return jdbc.queryForObject(sql, params, Integer.class);
 }
 
@@ -35,18 +34,19 @@ return jdbc.queryForObject(sql, params, Integer.class);
 public int insertOne(User user) {
 
 String sql = "INSERT INTO m_user(user_id,"
- + "password,"
- + "user_name,"
- + "birthday,"
- + "age,"
- + "marriage,"
- + "role)"
- + "VALUES(:userId,"
- + ":userName,"
- + ":birthday,"
- + ":age,"
- + ":marriage,"
- + ":role)";
+ + " password,"
+ + " user_name,"
+ + " birthday,"
+ + " age,"
+ + " marriage,"
+ + " role)"
+ + " VALUES(:userId,"
+ + " :password,"
+ + " :userName,"
+ + " :birthday,"
+ + " :age,"
+ + " :marriage,"
+ + " :role)";
 
 SqlParameterSource params = new MapSqlParameterSource()
 .addValue("userId", user.getUserId())
@@ -95,6 +95,8 @@ for(Map<String, Object> map: getList) {
 	user.setAge((Integer)map.get("age"));
 	user.setMarriage((Boolean)map.get("marriage"));
 	user.setRole((String)map.get("role"));
+	
+	userList.add(user);
 	}
 return userList;
 }
@@ -108,7 +110,7 @@ String sql = "UPDATE M_USER"
 + " birthday = :birthday,"
 + " age = :age,"
 + " marriage = :marriage"
-+ " WHERE usre_id = :usreid";
++ " WHERE usre_id = :usreId";
 
 SqlParameterSource params = new MapSqlParameterSource()
 .addValue("userId", user.getUserId())
@@ -116,8 +118,7 @@ SqlParameterSource params = new MapSqlParameterSource()
 .addValue("userName", user.getUserName())
 .addValue("birthday", user.getBirthday())
 .addValue("age", user.getAge())
-.addValue("marriage", user.isMarriage())
-.addValue("role", user.getRole());
+.addValue("marriage", user.isMarriage());
 
 return jdbc.update(sql, params);
 }
