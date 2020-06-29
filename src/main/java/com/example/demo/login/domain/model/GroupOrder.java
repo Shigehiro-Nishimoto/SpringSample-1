@@ -1,6 +1,6 @@
 //エラーの表示に、順序を持たせるためのインターフェース
 
-package com.example.demo.domain.model;
+package com.example.demo.login.domain.model;
 
 import javax.validation.GroupSequence;
 

@@ -1,10 +1,14 @@
 package com.example.demo.login.controller;
 
+import java. io. IOException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org. springframework. http. HttpStatus;
+import org. springframework. http. ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.domain.model.SignupForm;
-import com.example.demo.domain.model.User;
-import com.example.demo.domain.model.service.UserService;
+import com.example.demo.login.domain.model.SignupForm;
+import com.example.demo.login.domain.model.User;
+import com.example.demo.login.domain.model.service.UserService;
 
 @Controller
 public class HomeController {
@@ -97,7 +101,18 @@ public String postUserDetailUpdate(@ModelAttribute SignupForm form, Model model)
 	return getUserList(model);
 }
 
-
+@PostMapping(value = "/userDetail", params = "delete")
+		public String
+		postUserDetailDelete(@ModelAttribute SignupForm form, Model model) {
+	System.out.println("削除ボタンの処理");
+	boolean result = userService.deleteOne(form.getUserId());
+	if(result == true) {
+		model.addAttribute("result", "削除成功");
+	}else{
+		model.addAttribute("result", "削除失敗");
+	}
+	return getUserList(model);
+}
 
 //ログアウト用メソッド
 @GetMapping("/logout")
@@ -108,7 +123,19 @@ return "redirect:/login";
 	}
 
 @GetMapping("/userList/csv")
-public String getUserListCsv(Model model) {
-	return getUserList(model);
+public ResponseEntity<byte[]>
+getUserListCsv(Model model) {
+	userService.userCsvOut();
+	byte[] bytes = null;
+	try {
+		bytes = userService.getFile("sample.csv");
+		}catch(IOException e) {
+		e.printStackTrace();
+	}
+
+HttpHeaders header = new HttpHeaders();
+header.add("Content-Type","text/cs;charset=UTF-8");
+return new ResponseEntity<>(bytes, header, HttpStatus.OK);
+
 	}
 }

@@ -1,10 +1,10 @@
-package com.example.demo.domain.model.repository;
+package com.example.demo.login.domain.repository;
 
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 
-import com.example.demo.domain.model.User;
+import com.example.demo.login.domain.model.User;
 
 public interface UserDao{
 
@@ -20,7 +20,7 @@ public List<User> selectMany() throws DataAccessException;
 public int updateOne(User user) throws
 DataAccessException;
 
-public int deleOne(String iserId) throws
+public int deleteOne(String userId) throws
 DataAccessException;
 
 public void userCsvOut() throws

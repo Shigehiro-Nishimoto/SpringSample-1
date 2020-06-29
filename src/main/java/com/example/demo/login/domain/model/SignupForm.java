@@ -1,6 +1,6 @@
 //登録画面で、入力するときの規則を定める。
 
-package com.example.demo.domain.model;
+package com.example.demo.login.domain.model;
 
 import java.util.Date;
 
