@@ -43,8 +43,8 @@ public int insertOne(User user)throws
 @Override
 public User selectOne(String userId)throws
 	DataAccessException {
-	
-	Map<String, Object> map = jdbc.queryForMap("SELECT * FROM m_user " + "WHERE user_id = ?", userId);	
+
+	Map<String, Object> map = jdbc.queryForMap("SELECT * FROM m_user " + "WHERE user_id = ?", userId);
 	User user = new User();
 	//取得したデータを結果返却用の変数にセットしていく
 	user.setUserId((String)map.get("user_id"));
@@ -54,9 +54,9 @@ public User selectOne(String userId)throws
 	user.setAge((Integer)map.get("age"));
 	user.setMarriage((Boolean)map.get("marriage"));
 	user.setRole((String)map.get("role"));
-	
+
 	return user;
-	
+
 }
 
 //Userテーブルの全データを取得
@@ -74,8 +74,8 @@ for(Map<String, Object> map:getList) {
 	user.setAge((Integer)map.get("age"));
 	user.setMarriage((Boolean)map.get("marriage"));
 	user.setRole((String)map.get("role"));
-	
-	userList.add(user);	
+
+	userList.add(user);
 }
 return userList;
 }
@@ -95,9 +95,11 @@ int rowNumber = jdbc.update("UPDATE M_USER" + " SET" + " password = ?," + " user
 , user.isMarriage()
 , user.getUserId());
 
+if(rowNumber>0){
+	throw new DataAccessException("トランザクションテスト") {};
+}
 return rowNumber;
 }
-
 
 //Userテーブルを１件削除
 @Override
@@ -111,7 +113,7 @@ public int deleteOne(String userId) throws
 @Override
 public void userCsvOut() throws
 	DataAccessException {
-	
+
 	String sql = "SELECT * FROM m_user";
 	UserRowCallbackHandler handler = new
 	UserRowCallbackHandler();
