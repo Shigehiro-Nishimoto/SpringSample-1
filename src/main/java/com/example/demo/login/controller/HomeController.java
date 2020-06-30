@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org. springframework. dao. DataAccessException;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpHeaders;
 import org. springframework. http. HttpStatus;
 import org. springframework. http. ResponseEntity;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.login.domain.model.SignupForm;
 import com.example.demo.login.domain.model.User;
-import com.example.demo.login.domain.model.service.UserService;
+import com.example.demo.login.domain.model.service.UserService; 
 
 @Controller
 public class HomeController {
@@ -102,7 +102,7 @@ public String postUserDetailUpdate(@ModelAttribute SignupForm form, Model model)
 		model.addAttribute("result","更新失敗");
 		}
 	} catch(DataAccessException e) {
-		model.addAttribute("result","更新失敗(トランザクションテスト) ");
+		model.addAttribute("result", "更新失敗(トランザクションテスト) ");
 	}
 	return getUserList(model);
 }
