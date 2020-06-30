@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.login.domain.model.SignupForm;
 import com.example.demo.login.domain.model.User;
-import com.example.demo.login.domain.model.service.UserService; 
+import com.example.demo.login.domain.model.service.UserService;
 
 @Controller
 public class HomeController {
@@ -93,9 +93,9 @@ public String postUserDetailUpdate(@ModelAttribute SignupForm form, Model model)
 	user.setMarriage(form.isMarriage());
 
 	try {
-	
+
 	boolean result = userService.updateOne(user);
-	
+
 	if(result == true) {
 		model.addAttribute("result","更新成功");
 	}else {
@@ -117,7 +117,7 @@ public String postUserDetailUpdate(@ModelAttribute SignupForm form, Model model)
 	}else{
 		model.addAttribute("result", "削除失敗");
 	}
-	
+
 	return getUserList(model);
 }
 
@@ -143,6 +143,13 @@ getUserListCsv(Model model) {
 HttpHeaders header = new HttpHeaders();
 header.add("Content-Type","text/cs;charset=UTF-8");
 return new ResponseEntity<>(bytes, header, HttpStatus.OK);
-
 	}
+
+	@GetMapping("/admin")
+	public String getAdmin(Model model) {
+
+		model.addAttribute("contents", "login/admin :: admin_contents");
+
+		return "login/homeLayout";
+		}
 }
