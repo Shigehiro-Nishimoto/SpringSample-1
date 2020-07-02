@@ -23,22 +23,27 @@ UserDao dao;
 
 @Override
 public boolean insert(User user) {
-return false;
+	int result = dao.insertOne(user);
+	if(result == 0) {
+		return false;
+		} else {
+		return true;
+	}
 }
 
 @Override
 public User selectOne(String userId) {
-return null;
+return dao.selectOne(userId);
 }
 
 @Override
 public List<User> selectMany() {
-return null;
+return dao.selectMany();
 }
 
 @Override
 public boolean update(User user) {
-return false;
+	return false;
 }
 
 @Override
