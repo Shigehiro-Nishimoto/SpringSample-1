@@ -35,7 +35,6 @@ public int count() throws DataAccessException {
 @Override
 public int insertOne(User user)throws
 	DataAccessException {
-	int a = 1;
 	String password = passwordEncoder.encode(user.getPassword());
 
 	int rowNumber = jdbc.update("INSERT INTO m_user(user_id," + "password, " + "user_name, "
@@ -102,9 +101,6 @@ int rowNumber = jdbc.update("UPDATE M_USER" + " SET" + " password = ?," + " user
 , user.isMarriage()
 , user.getUserId());
 
-if(rowNumber>0){
-	throw new DataAccessException("トランザクションテスト") {};
-}
 return rowNumber;
 }
 

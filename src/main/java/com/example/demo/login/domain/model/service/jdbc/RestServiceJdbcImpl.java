@@ -43,11 +43,24 @@ return dao.selectMany();
 
 @Override
 public boolean update(User user) {
+
+	int result = dao.updateOne(user);
+	if(result == 0) {
 	return false;
+	} else {
+	return true;
+	}
 }
 
 @Override
 public boolean delete(String userId) {
-return false;
+
+	int result = dao.deleteOne(userId);
+	
+if(result == 0) {
+	return false;
+} else {
+	return true;
+		}
 	}
 }
