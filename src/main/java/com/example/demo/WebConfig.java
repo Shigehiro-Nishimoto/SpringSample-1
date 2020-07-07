@@ -25,10 +25,10 @@ return bean;
 
 @Bean
 public LocalValidatorFactoryBean localValidatorFactoryBean(){
-LocalValidatorFactoryBean localValidatorFactoryBean=
- new LocalValidatorFactoryBean();
+	LocalValidatorFactoryBean localValidatorFactoryBean=
+	 new LocalValidatorFactoryBean();
 
-localValidatorFactoryBean.setValidationMessageSource(messageSource());
-   return localValidatorFactoryBean;
+	localValidatorFactoryBean.setValidationMessageSource(messageSource());
+	   return localValidatorFactoryBean;
 	}
 }
