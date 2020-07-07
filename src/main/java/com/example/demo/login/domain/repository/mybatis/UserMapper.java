@@ -21,14 +21,14 @@ public interface UserMapper {
 + " age,"
 + " marriage,"
 + " role)"
-+ " VALUE("
++ " VALUES("
 + " #{userId},"
-+  "#{password},"
-+  "#{userName},"
-+  "#{birthday},"
-+  "#{age},"
-+  "#{marriage},"
-+  "#{role})")
++ " #{password},"
++ " #{userName},"
++ " #{birthday},"
++ " #{age},"
++ " #{marriage},"
++ " #{role})")
 
 public boolean insert(User user);
 
@@ -38,28 +38,28 @@ public boolean insert(User user);
 +"birthday,"
 +"age,"
 +"marriage,"
-+"role,"
-+"FROM m_user,"
-+"WHERE user_id = #{userId}")
++"role"
++" FROM m_user"
++" WHERE user_id = #{userId}")
 public User selectOne(String userId);
 
-@Select("SELECT usre_id AS userId,"
+@Select("SELECT user_id AS userId,"
 +"password,"
 +"user_name  AS userName,"
 +"birthday,"
 +"age,"
 +"marriage,"
-+"role,"
-+"FROM m_user,")
-public List<User> selectmany();
++"role"
++" FROM m_user")
+public List<User> selectMany();
 
 @Update("UPDATE m_user SET"
 + "password = #{password},"
 + "user_name = #{userName},"
-+ "password = #{birthday},"
-+ "user_name = #{age},"
-+ "password = #{marriage},"
-+ "user_name = #{userId}")
++ "birthday = #{birthday},"
++ "age = #{age},"
++ "marriage = #{marriage},"
++ "WHERE user_id = #{userId}")
 public boolean updateOne(User user);
 
 @Delete("DELETE FROM m_user WHERE user_id = #{userId}")
